@@ -3,7 +3,7 @@ maintainer       'OurTownRentals.com'
 maintainer_email 'evan@ourtownrentals.com'
 license          'Apache 2.0'
 description      'Installs and configures Supermarket.'
-version          '0.0.0'
+version          '0.1.0'
 
 supports 'Ubuntu', '14.04'
 
