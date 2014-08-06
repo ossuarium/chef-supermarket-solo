@@ -4,6 +4,7 @@ gem 'chef', '~> 11.14.2'
 gem 'berkshelf', '~> 3.1.2'
 
 group :development do
+  gem 'knife-solo_data_bag', '~> 1.1.0'
   gem 'knife-cookbook-doc', '~> 0.11.0'
 
   gem 'yard', '~> 0.8.7.4'

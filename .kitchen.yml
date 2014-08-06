@@ -3,14 +3,26 @@ driver:
   name: vagrant
 
 provisioner:
-  name: chef_zero
-  client_rb:
+  name: chef_solo
+  solo_rb:
     ssl_verify_mode: :verify_peer
+  attributes:
+    tz: 'America/Los_Angeles'
+    authorization:
+      sudo:
+        users: [vagrant]
+        passwordless: true
 
 platforms:
   - name: ubuntu-14.04
 
 suites:
   - name: default
+    driver:
+      network:
+        - ["private_network", {ip: "10.10.10.201"}]
     run_list:
-      - recipe[replace_cookbook::default]
+      - recipe[supermarket-solo::default]
+    attributes:
+      supermarket:
+        force_ssl: false
