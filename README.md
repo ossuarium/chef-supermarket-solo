@@ -22,7 +22,7 @@ Installs and configures Supermarket.
 * ntp (~> 1.6.2)
 * openssh (~> 1.3.4)
 * sudo (~> 2.6.0)
-* supermarket (~> 2.6.0)
+* supermarket (~> 2.7.0)
 * timezone-ii (~> 0.2.0)
 * users (~> 1.7.0)
 
