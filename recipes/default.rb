@@ -45,6 +45,22 @@ node.default['supermarket']['ssl_crt_path'] = "/etc/ssl/private/#{node['fqdn']}.
 node.default['supermarket']['ssl_key_path'] = "/etc/ssl/private/#{node['fqdn']}.key"
 
 #
+# SSL certificates.
+#
+
+cert = Chef::EncryptedDataBagItem.load 'certificates', node['fqdn']
+
+file node['supermarket']['ssl_crt_path'] do
+  content cert['ssl_certificate']
+  notifies :restart, 'service[nginx]'
+end
+
+file node['supermarket']['ssl_key_path'] do
+  content cert['ssl_certificate_key']
+  notifies :restart, 'service[nginx]'
+end
+
+#
 # Include common recipes.
 #
 
@@ -59,6 +75,11 @@ include_recipe 'sudo::default'
 include_recipe 'openssh::default'
 include_recipe 'firewall::default'
 include_recipe 'supermarket::default'
+
+service 'nginx' do
+  supports reload: true
+  action [:enable, :start]
+end
 
 #
 # Enable firewall and allow ssh and http/https.
@@ -85,20 +106,4 @@ firewall_rule 'https' do
   protocol :tcp
   ports [80, 443]
   action :allow
-end
-
-#
-# SSL certificates.
-#
-
-cert = Chef::EncryptedDataBagItem.load 'certificates', node['fqdn']
-
-file node['supermarket']['ssl_crt_path'] do
-  content cert['ssl_certificate']
-  notifies :reload, 'service[nginx]'
-end
-
-file node['supermarket']['ssl_key_path'] do
-  content cert['ssl_certificate_key']
-  notifies :reload, 'service[nginx]'
 end
