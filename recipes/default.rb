@@ -60,11 +60,6 @@ file node['supermarket']['ssl_key_path'] do
   notifies :restart, 'service[nginx]'
 end
 
-service 'nginx' do
-  supports reload: true
-  action [:enable, :start]
-end
-
 #
 # Include common recipes.
 #
@@ -80,6 +75,11 @@ include_recipe 'sudo::default'
 include_recipe 'openssh::default'
 include_recipe 'firewall::default'
 include_recipe 'supermarket::default'
+
+service 'nginx' do
+  supports reload: true
+  action [:enable, :start]
+end
 
 #
 # Enable firewall and allow ssh and http(s).
