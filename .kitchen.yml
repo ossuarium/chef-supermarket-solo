@@ -24,5 +24,9 @@ suites:
     run_list:
       - recipe[supermarket-solo::default]
     attributes:
+      postgresql:
+        password:
+          # 804usdk$sj904S093h%W@sjcls83su83$s2
+          postgres: md5b38b16ae7eeaa2f848045f59e69a43d8
       supermarket:
         force_ssl: false
