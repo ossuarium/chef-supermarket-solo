@@ -6,6 +6,9 @@
 
 Installs and configures Supermarket.
 
+### Usage
+
+
 ## Requirements
 
 ### Platforms
@@ -14,17 +17,17 @@ Installs and configures Supermarket.
 
 ### Cookbooks:
 
-* apt (~> 2.4.0)
+* apt (~> 2.7.0)
 * annoyances (~> 1.0.0)
 * chef-solo-search (~> 0.5.1)
-* firewall (~> 0.11.8)
-* logrotate (~> 1.6.0)
-* ntp (~> 1.6.2)
-* openssh (~> 1.3.4)
-* sudo (~> 2.6.0)
-* supermarket (~> 2.7.0)
+* firewall (~> 1.1.0)
+* logrotate (~> 1.9.1)
+* ntp (~> 1.8.2)
+* openssh (~> 1.4.0)
+* sudo (~> 2.7.1)
+* supermarket (~> 3.2.1)
 * timezone-ii (~> 0.2.0)
-* users (~> 1.7.0)
+* users (~> 1.8.2)
 
 ## Recipes
 
@@ -42,23 +45,6 @@ To clone the project run
 $ git clone https://github.com/ourtownrentals/chef-supermarket-solo.git
 ```
 
-### Rake
-
-Run `rake -T` to see all Rake tasks.
-
-```
-rake all                          # Run all tasks
-rake doc                          # Build documentation
-rake foodcritic                   # Lint Chef cookbooks
-rake kitchen:all                  # Run all test instances
-rake kitchen:default-ubuntu-1404  # Run default-ubuntu-1404 test instance
-rake readme                       # Generate README.md from _README.md.erb
-rake rubocop                      # Run RuboCop
-rake rubocop:auto_correct         # Auto-correct RuboCop offenses
-rake spec                         # Run RSpec code examples
-rake test                         # Run kitchen integration tests
-rake yard                         # Generate YARD Documentation
-```
 
 ### Thor
 
